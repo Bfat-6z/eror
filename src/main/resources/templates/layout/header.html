@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" th:fragment="header">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-danger" href="#">
+            <i class="bi bi-pc-display me-2"></i>PC Store
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-danger fw-bold" href="#">[[#{menu.home}]]</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">[[#{menu.product}]]</a>
+                    <ul class="dropdown-menu">
+                        <li th:each="dm : ${headerDanhMucs}">
+                            <a class="dropdown-item" th:href="@{'/danh-muc/' + ${dm.maDanhMuc}}" th:text="${dm.tenDanhMuc}"></a>
+                        </li>
+
+                    </ul>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">[[#{menu.contact}]]</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center">
+                <div class="search-container position-relative me-3" style="max-width: 400px;">
+                    <input class="form-control search-input" type="search" id="searchInput" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                    <i class="bi bi-search search-icon"></i>
+                </div>
+                <button class="btn btn-outline-danger btn-cart ms-2" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="bi bi-cart3 me-2"></i>[[#{menu.cart}]] <span class="badge bg-danger ms-1" id="cartCount">0</span>
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-account ms-2">
+                    <i class="bi bi-person-circle me-2"></i>[[#{menu.account}]]
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
